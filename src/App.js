@@ -25,12 +25,27 @@ class App extends React.Component {
       })
 
       return {
-        todos: updateTodo
+        todos: updateTodo,
+        localStorage: localStorage.setItem("local-todo-state", JSON.stringify(updateTodo))
       }
     })
   }
+
+  componentDidMount() {
+    if(localStorage.getItem("local-todo-state")){
+      this.setState({
+        todos: JSON.parse(localStorage.getItem("local-todo-state"))
+      })
+    }
+    else{
+      this.setState({
+        todos: todoData
+      })
+    }
+  }
   
   render() {
+
     const todoList = this.state.todos.map(item => <TodoItem key={item.id} item={item} handleClick={this.handleClick}/>)
 
     return (
