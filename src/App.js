@@ -25,21 +25,23 @@ class App extends React.Component {
       })
 
       return {
-        todos: updateTodo,
-        localStorage: localStorage.setItem("local-todo-state", JSON.stringify(updateTodo))
+        todos: updateTodo
       }
     })
   }
 
   componentDidMount() {
-    if(localStorage.getItem("local-todo-state")){
+    if(localStorage.getItem("local-todo")){
       this.setState({
-        todos: JSON.parse(localStorage.getItem("local-todo-state"))
+        todos: JSON.parse(localStorage.getItem("local-todo"))
       })
     }
-    else{
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.todos !== this.state.todos) {
       this.setState({
-        todos: todoData
+        localStorage: localStorage.setItem("local-todo", JSON.stringify(this.state.todos))
       })
     }
   }
