@@ -4,7 +4,7 @@ Practicing a basic React ToDo app with changed persistant state.
 
 Project live at https://otpidusprime.github.io/react-todo/
 
-## Changelog:
+## 💫 Changelog:
 
 * **[v 1.0](https://github.com/otpidusprime/react-todo/releases/tag/v1.0)** // _17 Nov 2020_
  * Initial release with local state save
